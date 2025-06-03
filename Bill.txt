@@ -1,0 +1,8 @@
+	Apple : 120 : 3
+	Bananas : 5 : 0
+	eggs : 9 : 10
+	Tea : 50 : 1
+	Bananas : 100 : 0
+	Milk : 0 : 10
+	 : 0 : 10
+	 : 0 : 10
