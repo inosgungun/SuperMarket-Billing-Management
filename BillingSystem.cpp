@@ -41,7 +41,7 @@ public:
     }
 };
 
-void addItem(Bill b){
+void addItem(Bill &b){
     bool close = false;
     while(!close) {
         int choice;
@@ -77,14 +77,14 @@ void addItem(Bill b){
             }
             out.close();
             cout<<"\tItem Added Successfully."<<endl;
-            Sleep(3000);
+            Sleep(1500);
         }
 
         else if(choice == 2){
             system("cls");
             close = true;
             cout<<"\tClosing..."<<endl;
-            Sleep(3000);
+            Sleep(1500);
         }
     }
 }
@@ -117,12 +117,16 @@ void printBill(){
             bool found = false;
 
             while(getline(in, line)){
-                stringstream ss;
+                stringstream ss(line);
                 ss<<line;
                 string itemName;
                 int itemRate, itemQuant;
-                char delimiter;
-                ss>>itemName>>delimiter>>itemRate>>delimiter>>itemQuant;
+               
+                getline(ss, itemName, ':');
+                ss>>ws;
+                ss>>itemRate;
+                ss.ignore();
+                ss>>itemQuant;
 
                 if(item == itemName){
                     found = true;
@@ -151,18 +155,20 @@ void printBill(){
             in.close();
             remove("Bill.txt");
             rename("Bill Temp.txt", "Bill.txt");
+            Sleep(1500);
         }
         else if(choice == 2){
             close = true;
             cout<<"\tCounting Total Amount..."<<endl;
+            Sleep(1000);
         }
-        Sleep(3000);
+        
     }
     system("cls");
     cout<<endl<<endl;
     cout<<"\tTotal Bill ---------------- : "<<count<<endl<<endl;
     cout<<"\tThank you for shopping with us!"<<endl;
-    Sleep(5000);
+    Sleep(3000);
 }
 
 int main() {
